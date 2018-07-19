@@ -1,0 +1,10 @@
+#!/bin/bash
+
+. /opt/helpers
+
+mkdir -p /var/log/apache2
+chown -R www-data:adm /var/log/apache2
+
+a2ensite 000-default
+
+
