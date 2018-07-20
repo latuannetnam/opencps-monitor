@@ -33,8 +33,8 @@ chown -R nagios:nagios /var/cache/icinga2
 chown -R nagios:root /etc/icinga2
 
 # enable necessary features
-icinga2 feature enable ido-mysql livestatus compatlog command
-
+# icinga2 feature enable ido-mysql livestatus compatlog command
+icinga2 feature enable ido-mysql command mainlog influxdb
 #icinga2 API cert - regenerate new private key and certificate when running in a new container
 if [ ! -f "/var/lib/icinga2/certs/$(hostname).key" ]; then
 	icinga2 node setup --master
@@ -84,3 +84,44 @@ object IdoMysqlConnection "ido-mysql" {
   database = "${ICINGA2_IDO_MYSQL_DATA}"
 }
 END
+
+cat > /etc/icinga2/features-available/influxdb.conf <<-END
+/**
+ * The InfluxdbWriter type writes check result metrics and
+ * performance data to an InfluxDB HTTP API
+ */
+
+library "perfdata"
+
+object InfluxdbWriter "influxdb" {
+  host = "127.0.0.1"
+  port = 8086
+  database = "${INFLUXDB_DATA}"
+  username = "${INFLUXDB_USER}"
+  password = "${INFLUXDB_PASS}"
+  flush_threshold = 1024
+  flush_interval = 10s
+  enable_send_thresholds = true
+  enable_send_metadata = true
+
+  host_template = {
+    measurement = "\$host.check_command\$"
+    tags = {
+      hostname = "\$host.name\$"
+      zone = "\$host.zone\$"	
+      server_type = "\$host.vars.server_types\$"	
+    }
+  }
+  service_template = {
+    measurement = "\$service.check_command\$"
+    tags = {
+      hostname = "\$host.name\$"
+      service = "\$service.name\$"
+      zone = "\$host.zone\$"
+      server_type = "\$host.vars.server_types\$"
+      host_group = "\$host.groups\$"		
+    }
+  }
+}
+END
+

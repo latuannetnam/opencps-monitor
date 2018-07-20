@@ -1,0 +1,9648 @@
+{
+	"__inputs": [
+		{
+		"name": "INFLUXDB_DATA",
+		"label": "influxdb-data",
+		"description": "",
+		"type": "datasource",
+		"pluginId": "influxdb",
+		"pluginName": "InfluxDB"
+		}
+	],
+	"__requires": [
+		{
+		"type": "grafana",
+		"id": "grafana",
+		"name": "Grafana",
+		"version": "5.2.1"
+		},
+		{
+		"type": "panel",
+		"id": "graph",
+		"name": "Graph",
+		"version": "5.0.0"
+		},
+		{
+		"type": "datasource",
+		"id": "influxdb",
+		"name": "InfluxDB",
+		"version": "5.0.0"
+		},
+		{
+		"type": "panel",
+		"id": "singlestat",
+		"name": "Singlestat",
+		"version": "5.0.0"
+		}
+	],
+	"annotations": {
+		"list": [
+		{
+			"builtIn": 1,
+			"datasource": "-- Grafana --",
+			"enable": true,
+			"hide": true,
+			"iconColor": "rgba(0, 211, 255, 1)",
+			"name": "Annotations & Alerts",
+			"type": "dashboard"
+		}
+		]
+	},
+	"description": "Liferay Dashboard",
+	"editable": true,
+	"gnetId": 381,
+	"graphTooltip": 0,
+	"id": null,
+	"iteration": 1532071972415,
+	"links": [],
+	"panels": [
+		{
+		"collapsed": false,
+		"gridPos": {
+			"h": 1,
+			"w": 24,
+			"x": 0,
+			"y": 0
+		},
+		"id": 36,
+		"panels": [],
+		"title": "Overview",
+		"type": "row"
+		},
+		{
+		"cacheTimeout": null,
+		"colorBackground": true,
+		"colorValue": false,
+		"colors": [
+			"rgba(28, 197, 0, 0.9)",
+			"rgb(229, 0, 0)",
+			"rgba(192, 17, 17, 0.97)"
+		],
+		"datasource": "icinga2",
+		"editable": true,
+		"error": false,
+		"format": "none",
+		"gauge": {
+			"maxValue": 100,
+			"minValue": 0,
+			"show": false,
+			"thresholdLabels": false,
+			"thresholdMarkers": true
+		},
+		"gridPos": {
+			"h": 6,
+			"w": 3,
+			"x": 0,
+			"y": 1
+		},
+		"id": 1,
+		"interval": null,
+		"links": [],
+		"mappingType": 1,
+		"mappingTypes": [
+			{
+			"name": "value to text",
+			"value": 1
+			},
+			{
+			"name": "range to text",
+			"value": 2
+			}
+		],
+		"maxDataPoints": 100,
+		"nullPointMode": "connected",
+		"nullText": null,
+		"postfix": "",
+		"postfixFontSize": "50%",
+		"prefix": "",
+		"prefixFontSize": "50%",
+		"rangeMaps": [
+			{
+			"from": "null",
+			"text": "N/A",
+			"to": "null"
+			}
+		],
+		"sparkline": {
+			"fillColor": "rgba(31, 118, 189, 0.18)",
+			"full": false,
+			"lineColor": "rgb(31, 120, 193)",
+			"show": false
+		},
+		"tableColumn": "",
+		"targets": [
+			{
+			"dsType": "influxdb",
+			"groupBy": [],
+			"measurement": "ping4",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT last(\"state\") FROM \"ping4\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"state"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "last"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": "1",
+		"title": "Host Alive",
+		"type": "singlestat",
+		"valueFontSize": "80%",
+		"valueMaps": [
+			{
+			"op": "=",
+			"text": "UP",
+			"value": "0"
+			},
+			{
+			"op": "=",
+			"text": "DOWN",
+			"value": "1"
+			},
+			{
+			"op": "=",
+			"text": "DOWN",
+			"value": "2"
+			}
+		],
+		"valueName": "avg"
+		},
+		{
+		"cacheTimeout": null,
+		"colorBackground": true,
+		"colorValue": false,
+		"colors": [
+			"rgba(50, 172, 45, 0.97)",
+			"rgba(237, 129, 40, 0.89)",
+			"rgba(245, 54, 54, 0.9)"
+		],
+		"datasource": "icinga2",
+		"format": "dtdurations",
+		"gauge": {
+			"maxValue": 100,
+			"minValue": 0,
+			"show": false,
+			"thresholdLabels": false,
+			"thresholdMarkers": true
+		},
+		"gridPos": {
+			"h": 6,
+			"w": 3,
+			"x": 3,
+			"y": 1
+		},
+		"id": 23,
+		"interval": null,
+		"links": [],
+		"mappingType": 1,
+		"mappingTypes": [
+			{
+			"name": "value to text",
+			"value": 1
+			},
+			{
+			"name": "range to text",
+			"value": 2
+			}
+		],
+		"maxDataPoints": 100,
+		"nullPointMode": "connected",
+		"nullText": null,
+		"postfix": "",
+		"postfixFontSize": "50%",
+		"prefix": "",
+		"prefixFontSize": "50%",
+		"rangeMaps": [
+			{
+			"from": "null",
+			"text": "N/A",
+			"to": "null"
+			}
+		],
+		"sparkline": {
+			"fillColor": "rgba(31, 118, 189, 0.18)",
+			"full": false,
+			"lineColor": "rgb(31, 120, 193)",
+			"show": false
+		},
+		"tableColumn": "",
+		"targets": [
+			{
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_uptime",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "last"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": ":1,:2",
+		"title": "Uptime",
+		"type": "singlestat",
+		"valueFontSize": "80%",
+		"valueMaps": [
+			{
+			"op": "=",
+			"text": "N/A",
+			"value": "null"
+			}
+		],
+		"valueName": "current"
+		},
+		{
+		"aliasColors": {
+			"CRITICAL": "#BF1B00",
+			"DOWNTIME": "#E0F9D7",
+			"WARNING": "#EAB839",
+			"rta": "#6ED0E0"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"editable": true,
+		"error": false,
+		"fill": 1,
+		"grid": {},
+		"gridPos": {
+			"h": 6,
+			"w": 6,
+			"x": 6,
+			"y": 1
+		},
+		"id": 2,
+		"legend": {
+			"alignAsTable": false,
+			"avg": false,
+			"current": true,
+			"hideEmpty": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 2,
+		"links": [],
+		"nullPointMode": "connected",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+			{
+			"alias": "WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "DOWNTIME",
+			"fill": 2,
+			"linewidth": 0,
+			"steppedLine": true,
+			"yaxis": 2,
+			"zindex": -3
+			}
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "packetloss",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "ping4",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "pl"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "rta",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "ping4",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "rta"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "WARNING",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "ping4",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"warn"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "rta"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "CRITICAL",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "ping4",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"crit"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "rta"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "DOWNTIME",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "ping4",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "E",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"downtime_depth"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					" * 100"
+					],
+					"type": "math"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "rta"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Ping4",
+		"tooltip": {
+			"msResolution": true,
+			"shared": true,
+			"sort": 0,
+			"value_type": "cumulative"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 6,
+			"x": 12,
+			"y": 1
+		},
+		"id": 11,
+		"interval": "",
+		"legend": {
+			"alignAsTable": false,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": true,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_cpu",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "!=",
+				"value": "total_cpu_avg"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 6,
+			"x": 18,
+			"y": 1
+		},
+		"id": 12,
+		"legend": {
+			"alignAsTable": false,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "centreon_check_memory",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"centreon_check_memory\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter GROUP BY time($__interval), \"metric\" fill(previous)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "max_mem",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "centreon_check_memory",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"max"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "memory"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "used"
+				}
+			]
+			},
+			{
+			"alias": "used",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": true,
+			"measurement": "centreon_check_memory",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "memory"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "used"
+				}
+			]
+			},
+			{
+			"alias": "buffer",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": true,
+			"measurement": "centreon_check_memory",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "memory"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "buffer"
+				}
+			]
+			},
+			{
+			"alias": "cached",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": true,
+			"measurement": "centreon_check_memory",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "E",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "memory"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "cached"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Memory",
+		"tooltip": {
+			"shared": false,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": [
+			"total"
+			]
+		},
+		"yaxes": [
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"collapsed": true,
+		"gridPos": {
+			"h": 1,
+			"w": 24,
+			"x": 0,
+			"y": 7
+		},
+		"id": 30,
+		"panels": [
+			{
+			"aliasColors": {},
+			"bars": false,
+			"dashLength": 10,
+			"dashes": false,
+			"datasource": "icinga2",
+			"fill": 1,
+			"gridPos": {
+				"h": 6,
+				"w": 12,
+				"x": 0,
+				"y": 8
+			},
+			"id": 32,
+			"interval": "",
+			"legend": {
+				"alignAsTable": true,
+				"avg": false,
+				"current": true,
+				"max": false,
+				"min": false,
+				"rightSide": true,
+				"show": true,
+				"total": false,
+				"values": true
+			},
+			"lines": true,
+			"linewidth": 1,
+			"links": [],
+			"nullPointMode": "null as zero",
+			"percentage": false,
+			"pointradius": 5,
+			"points": false,
+			"renderer": "flot",
+			"seriesOverrides": [],
+			"spaceLength": 10,
+			"stack": true,
+			"steppedLine": false,
+			"targets": [
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": true,
+				"measurement": "http",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"refId": "A",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "time"
+					}
+				]
+				},
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": false,
+				"measurement": "http",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"refId": "B",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "time_connect"
+					}
+				]
+				},
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": false,
+				"measurement": "http",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"refId": "C",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": " time_headers"
+					}
+				]
+				},
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"measurement": "http",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"query": "SELECT mean(\"value\") FROM \"http\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"metric\" = ' time_headers') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+				"rawQuery": false,
+				"refId": "D",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "time_transfer"
+					}
+				]
+				}
+			],
+			"thresholds": [],
+			"timeFrom": null,
+			"timeShift": null,
+			"title": "HTTP",
+			"tooltip": {
+				"shared": true,
+				"sort": 0,
+				"value_type": "individual"
+			},
+			"type": "graph",
+			"xaxis": {
+				"buckets": null,
+				"mode": "time",
+				"name": null,
+				"show": true,
+				"values": []
+			},
+			"yaxes": [
+				{
+				"format": "s",
+				"label": null,
+				"logBase": 1,
+				"max": null,
+				"min": null,
+				"show": true
+				},
+				{
+				"format": "short",
+				"label": null,
+				"logBase": 1,
+				"max": null,
+				"min": null,
+				"show": true
+				}
+			],
+			"yaxis": {
+				"align": false,
+				"alignLevel": null
+			}
+			},
+			{
+			"aliasColors": {},
+			"bars": false,
+			"dashLength": 10,
+			"dashes": false,
+			"datasource": "icinga2",
+			"fill": 1,
+			"gridPos": {
+				"h": 6,
+				"w": 12,
+				"x": 12,
+				"y": 8
+			},
+			"id": 46,
+			"interval": "",
+			"legend": {
+				"alignAsTable": true,
+				"avg": false,
+				"current": true,
+				"max": false,
+				"min": false,
+				"rightSide": true,
+				"show": true,
+				"total": false,
+				"values": true
+			},
+			"lines": true,
+			"linewidth": 1,
+			"links": [],
+			"nullPointMode": "null as zero",
+			"percentage": false,
+			"pointradius": 5,
+			"points": false,
+			"renderer": "flot",
+			"seriesOverrides": [],
+			"spaceLength": 10,
+			"stack": false,
+			"steppedLine": false,
+			"targets": [
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": false,
+				"measurement": "check_apache_status",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"query": "SELECT mean(\"value\") FROM \"http\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"metric\" = 'time') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+				"rawQuery": false,
+				"refId": "A",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "Requests/sec"
+					}
+				]
+				},
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": false,
+				"measurement": "check_apache_status",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"query": "SELECT mean(\"value\") FROM \"http\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"metric\" = 'time') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+				"rawQuery": false,
+				"refId": "B",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "Open slot"
+					}
+				]
+				},
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": false,
+				"measurement": "check_apache_status",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"query": "SELECT mean(\"value\") FROM \"check_apache_status\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"metric\" = 'Reading Request') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+				"rawQuery": false,
+				"refId": "C",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "Reading Request"
+					}
+				]
+				},
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": false,
+				"measurement": "check_apache_status",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"query": "SELECT mean(\"value\") FROM \"check_apache_status\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"metric\" = 'Reading Request') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+				"rawQuery": false,
+				"refId": "D",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "Sending Reply"
+					}
+				]
+				},
+				{
+				"alias": "$tag_metric",
+				"dsType": "influxdb",
+				"groupBy": [
+					{
+					"params": [
+						"$__interval"
+					],
+					"type": "time"
+					},
+					{
+					"params": [
+						"metric"
+					],
+					"type": "tag"
+					},
+					{
+					"params": [
+						"0"
+					],
+					"type": "fill"
+					}
+				],
+				"hide": false,
+				"measurement": "check_apache_status",
+				"orderByTime": "ASC",
+				"policy": "default",
+				"query": "SELECT mean(\"value\") FROM \"check_apache_status\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"metric\" = 'Reading Request') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+				"rawQuery": false,
+				"refId": "E",
+				"resultFormat": "time_series",
+				"select": [
+					[
+					{
+						"params": [
+						"value"
+						],
+						"type": "field"
+					},
+					{
+						"params": [],
+						"type": "mean"
+					}
+					]
+				],
+				"tags": [
+					{
+					"key": "hostname",
+					"operator": "=~",
+					"value": "/^$hostname$/"
+					},
+					{
+					"condition": "AND",
+					"key": "metric",
+					"operator": "=",
+					"value": "Waiting for Connection"
+					}
+				]
+				}
+			],
+			"thresholds": [],
+			"timeFrom": null,
+			"timeShift": null,
+			"title": "Apache status",
+			"tooltip": {
+				"shared": true,
+				"sort": 0,
+				"value_type": "individual"
+			},
+			"type": "graph",
+			"xaxis": {
+				"buckets": null,
+				"mode": "time",
+				"name": null,
+				"show": true,
+				"values": []
+			},
+			"yaxes": [
+				{
+				"format": "short",
+				"label": null,
+				"logBase": 1,
+				"max": null,
+				"min": null,
+				"show": true
+				},
+				{
+				"format": "short",
+				"label": null,
+				"logBase": 1,
+				"max": null,
+				"min": null,
+				"show": true
+				}
+			],
+			"yaxis": {
+				"align": false,
+				"alignLevel": null
+			}
+			}
+		],
+		"title": "Web",
+		"type": "row"
+		},
+		{
+		"collapsed": false,
+		"gridPos": {
+			"h": 1,
+			"w": 24,
+			"x": 0,
+			"y": 8
+		},
+		"id": 50,
+		"panels": [],
+		"title": "JVM",
+		"type": "row"
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 9
+		},
+		"id": 52,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^HeapMemoryUsage/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Heap memory use",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 9
+		},
+		"id": 53,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^NonHeapMemoryUsage/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "NonHeap memory use",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 9
+		},
+		"id": 68,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_memorypool_metaspace/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MemoryPool Metaspace",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 15
+		},
+		"id": 69,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_memorypool_psedenspace/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MemoryPool PS Edenspace",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 15
+		},
+		"id": 70,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_memorypool_psoldgen/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MemoryPool PS Old Gen",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 15
+		},
+		"id": 71,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_memorypool_pssurvivorspace/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MemoryPool PS Survivor space",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "decbytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 21
+		},
+		"id": 56,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" ~= 'jmx_garbagecollector_psmarksweep') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_garbagecollector_psmarksweep/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/Count/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "GarbageCollector  PS MarkSweep",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 21
+		},
+		"id": 57,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /jmx_garbagecollector_psscavenge/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_garbagecollector_psscavenge/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/Count/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "GarbageCollector  PS Scavenge",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 21
+		},
+		"id": 54,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_threading/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "!~",
+				"value": "/Time/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "!~",
+				"value": "/Total/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Thread",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 27
+		},
+		"id": 55,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/jmx_classloading/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "ClassLoading",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"collapsed": false,
+		"gridPos": {
+			"h": 1,
+			"w": 24,
+			"x": 0,
+			"y": 33
+		},
+		"id": 59,
+		"panels": [],
+		"title": "Tomcat",
+		"type": "row"
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 34
+		},
+		"id": 60,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /^tomcat_globalrequest/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "tomcat_globalrequestprocessor_requestCount"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /^tomcat_globalrequest/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "tomcat_globalrequestprocessor_errorCount"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Request",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 34
+		},
+		"id": 61,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /^tomcat_globalrequest/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "tomcat_globalrequestprocessor_processingTime"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /^tomcat_globalrequest/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "tomcat_globalrequestprocessor_maxTime"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Proccessing time",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "dtdurationms",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 34
+		},
+		"id": 62,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /^tomcat_globalrequest/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "tomcat_globalrequestprocessor_bytesReceived"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /^tomcat_globalrequest/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "tomcat_globalrequestprocessor_bytesSent"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Througput",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "Bps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 40
+		},
+		"id": 63,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT difference(mean(\"value\")) FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /tomcat_threadpool/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/tomcat_threadpool/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Threadpool",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"collapsed": false,
+		"gridPos": {
+			"h": 1,
+			"w": 24,
+			"x": 0,
+			"y": 46
+		},
+		"id": 48,
+		"panels": [],
+		"title": "Liferay",
+		"type": "row"
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 47
+		},
+		"id": 64,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT difference(mean(\"value\")) FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /tomcat_threadpool/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/liferay_portalmanager/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/Count/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Portal Request",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 47
+		},
+		"id": 65,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT difference(mean(\"value\")) FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /tomcat_threadpool/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/liferay_portalmanager/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/Time/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "!~",
+				"value": "/Count/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Portal Request time",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "dtdurationms",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 53
+		},
+		"id": 66,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT difference(mean(\"value\")) FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /tomcat_threadpool/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/liferay_actionrequestportlet/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/Count/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Porlet Request",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 53
+		},
+		"id": 67,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_jmx",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT difference(mean(\"value\")) FROM \"check_jmx\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"service\" =~ /tomcat_threadpool/) AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=~",
+				"value": "/liferay_actionrequestportlet/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/Time/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "!~",
+				"value": "/Count/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Porlet Request time",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"collapsed": false,
+		"gridPos": {
+			"h": 1,
+			"w": 24,
+			"x": 0,
+			"y": 59
+		},
+		"id": 28,
+		"panels": [],
+		"title": "MySQL",
+		"type": "row"
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 60
+		},
+		"id": 33,
+		"interval": "",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_service",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"service"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql_query",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "mysql-sql_max_query_time"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MySQL max query time",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "dtdurations",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 60
+		},
+		"id": 34,
+		"interval": "",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_service",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"service"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql_query",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "service",
+				"operator": "=",
+				"value": "mysql-sql_long_queries"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MySQL slow queries",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 60
+		},
+		"id": 42,
+		"interval": "",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Open_files"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Open_tables"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Table_locks_waited"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MySQL tables",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 66
+		},
+		"id": 40,
+		"interval": "",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Threads_connected"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Threads_running"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MySQL Thread",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 66
+		},
+		"id": 41,
+		"interval": "",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"10s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Queries"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT difference(mean(\"value\")) FROM \"mysql\" WHERE (\"hostname\" =~ /^$hostname$/ AND \"metric\" = 'Questions') AND $timeFilter GROUP BY time($__interval), \"metric\" fill(0)",
+			"rawQuery": true,
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [],
+					"type": "difference"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Questions"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MySQL queries",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 66
+		},
+		"id": 43,
+		"interval": "",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/Qcache/"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": true,
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Qcache_inserts"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": true,
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Qcache_lowmem_prunes"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": true,
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "E",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Qcache_not_cached"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": true,
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "F",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Qcache_queries_in_cache"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MySQL query cache",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 72
+		},
+		"id": 44,
+		"interval": "",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"rightSide": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"0"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "mysql",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					"1s"
+					],
+					"type": "derivative"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "Connections"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "MySQL connection",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "ops",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"collapsed": false,
+		"gridPos": {
+			"h": 1,
+			"w": 24,
+			"x": 0,
+			"y": 78
+		},
+		"id": 38,
+		"panels": [],
+		"title": "System",
+		"type": "row"
+		},
+		{
+		"aliasColors": {
+			"CRITICAL": "#BF1B00",
+			"DOWNTIME": "#E0F9D7",
+			"WARNING": "#EAB839",
+			"processes": "#447EBC",
+			"rta": "#6ED0E0"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"editable": true,
+		"error": false,
+		"fill": 1,
+		"grid": {},
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 79
+		},
+		"id": 5,
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": false,
+			"hideEmpty": true,
+			"max": false,
+			"min": false,
+			"rightSide": true,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "connected",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+			{
+			"alias": "WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "DOWNTIME",
+			"fill": 2,
+			"linewidth": 0,
+			"steppedLine": true,
+			"yaxis": 2,
+			"zindex": -3
+			}
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "processes",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "procs",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "procs"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "WARNING",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "procs",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"warn"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "procs"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "CRITICAL",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "procs",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"crit"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "procs"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "DOWNTIME",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "procs",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "E",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"downtime_depth"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					" * 100"
+					],
+					"type": "math"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "procs"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Processes",
+		"tooltip": {
+			"msResolution": true,
+			"shared": true,
+			"sort": 0,
+			"value_type": "cumulative"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 79
+		},
+		"id": 25,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_vmstat_procs",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "running"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_vmstat_procs",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "blocked"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Running processes",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {
+			"CRITICAL": "#BF1B00",
+			"DOWNTIME": "#E0F9D7",
+			"WARNING": "#EAB839",
+			"load1": "#1F78C1",
+			"load1-CRITICAL": "#BF1B00",
+			"load15": "#0A437C",
+			"load15-CRITICAL": "#BF1B00",
+			"load15-WARNING": "#CCA300",
+			"load5": "#1F78C1",
+			"load5-CRITICAL": "#BF1B00",
+			"load5-WARNING": "#CCA300",
+			"rta": "#6ED0E0"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"editable": true,
+		"error": false,
+		"fill": 1,
+		"grid": {},
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 79
+		},
+		"id": 3,
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": false,
+			"hideEmpty": true,
+			"max": false,
+			"min": false,
+			"rightSide": true,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 2,
+		"links": [],
+		"nullPointMode": "connected",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+			{
+			"alias": "load1-WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "load1-CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "load5-WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "load5-CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "load15-WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "load15-CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "DOWNTIME",
+			"fill": 2,
+			"linewidth": 0,
+			"steppedLine": true,
+			"yaxis": 2,
+			"zindex": -3
+			}
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "load1",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load1"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load1-WARNING",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"warn"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load1"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load1-CRITICAL",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"crit"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load1"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load5",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load5"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load5-WARNING",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "F",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"warn"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load5"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load5-CRITICAL",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "G",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"crit"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load5"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load15",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "H",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load15"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load15-WARNING",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "I",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"warn"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load15"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "load15-CRITICAL",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "J",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"crit"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load15"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "DOWNTIME",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "load",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "K",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"downtime_depth"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					" * 100"
+					],
+					"type": "math"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "load1"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Load",
+		"tooltip": {
+			"msResolution": true,
+			"shared": true,
+			"sort": 0,
+			"value_type": "cumulative"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {
+			"CRITICAL": "#BF1B00",
+			"DOWNTIME": "#E0F9D7",
+			"WARNING": "#EAB839",
+			"free": "#70DBED",
+			"max": "#0A437C",
+			"processes": "#447EBC",
+			"rta": "#6ED0E0"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"editable": true,
+		"error": false,
+		"fill": 8,
+		"grid": {},
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 85
+		},
+		"id": 8,
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": false,
+			"hideEmpty": true,
+			"max": false,
+			"min": false,
+			"rightSide": true,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 2,
+		"links": [],
+		"nullPointMode": "connected",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+			{
+			"alias": "WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "DOWNTIME",
+			"fill": 2,
+			"linewidth": 0,
+			"steppedLine": true,
+			"yaxis": 2,
+			"zindex": -3
+			}
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "max",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "disk",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"max\") FROM \"disk\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter GROUP BY time($interval) fill(null)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"max"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^$disk$/"
+				}
+			]
+			},
+			{
+			"alias": "WARNING",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "disk",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"warn\") FROM \"disk\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter GROUP BY time($interval) fill(null)",
+			"rawQuery": false,
+			"refId": "F",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"warn"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^$disk$/"
+				}
+			]
+			},
+			{
+			"alias": "CRITICAL",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "disk",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"crit\") FROM \"disk\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter GROUP BY time($interval) fill(null)",
+			"rawQuery": false,
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"crit"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^$disk$/"
+				}
+			]
+			},
+			{
+			"alias": "used",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "disk",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"disk\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter GROUP BY time($interval) fill(null)",
+			"rawQuery": false,
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^$disk$/"
+				}
+			]
+			},
+			{
+			"alias": "DOWNTIME",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "disk",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"downtime_depth\")  * 100 FROM \"disk\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter GROUP BY time($interval) fill(null)",
+			"rawQuery": false,
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"downtime_depth"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					" * 100"
+					],
+					"type": "math"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^$disk$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk $disk",
+		"tooltip": {
+			"msResolution": true,
+			"shared": true,
+			"sort": 0,
+			"value_type": "cumulative"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {
+			"CRITICAL": "#BF1B00",
+			"DOWNTIME": "#E0F9D7",
+			"WARNING": "#EAB839",
+			"processes": "#447EBC",
+			"rta": "#6ED0E0"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"editable": true,
+		"error": false,
+		"fill": 0,
+		"grid": {},
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 85
+		},
+		"id": 6,
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": false,
+			"hideEmpty": true,
+			"max": false,
+			"min": false,
+			"rightSide": true,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 2,
+		"links": [],
+		"nullPointMode": "connected",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+			{
+			"alias": "WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "DOWNTIME",
+			"fill": 2,
+			"linewidth": 0,
+			"steppedLine": true,
+			"yaxis": 2,
+			"zindex": -3
+			},
+			{
+			"alias": "free",
+			"fill": 8
+			}
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "total",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "swap",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"max"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "swap"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "free",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "swap",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "swap"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "WARNING",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "swap",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "C",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"warn"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "swap"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "CRITICAL",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "swap",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"crit"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "swap"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "DOWNTIME",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "swap",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "E",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"downtime_depth"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					" * 100"
+					],
+					"type": "math"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "swap"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Free Swap",
+		"tooltip": {
+			"msResolution": true,
+			"shared": true,
+			"sort": 0,
+			"value_type": "cumulative"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 85
+		},
+		"id": 26,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_vmstat_paging",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "pswpin"
+				}
+			]
+			},
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_vmstat_paging",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=",
+				"value": "pswpout"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Page Swap in & out",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {
+			"CRITICAL": "#BF1B00",
+			"DOWNTIME": "#E0F9D7",
+			"WARNING": "#EAB839",
+			"free": "#70DBED",
+			"max": "#0A437C",
+			"processes": "#447EBC",
+			"rta": "#6ED0E0",
+			"users": "#1F78C1"
+		},
+		"bars": true,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"editable": true,
+		"error": false,
+		"fill": 8,
+		"grid": {},
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 0,
+			"y": 91
+		},
+		"id": 9,
+		"interval": "> 20s",
+		"legend": {
+			"alignAsTable": true,
+			"avg": false,
+			"current": false,
+			"hideEmpty": true,
+			"max": false,
+			"min": false,
+			"rightSide": true,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": false,
+		"linewidth": 2,
+		"links": [],
+		"nullPointMode": "connected",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [
+			{
+			"alias": "WARNING",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "CRITICAL",
+			"fill": 0,
+			"yaxis": 1
+			},
+			{
+			"alias": "DOWNTIME",
+			"fill": 2,
+			"linewidth": 0,
+			"steppedLine": true,
+			"yaxis": 2,
+			"zindex": -3
+			}
+		],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "users",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "users",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "users"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			},
+			{
+			"alias": "DOWNTIME",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"null"
+				],
+				"type": "fill"
+				}
+			],
+			"hide": false,
+			"measurement": "users",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "D",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"downtime_depth"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				},
+				{
+					"params": [
+					" * 100"
+					],
+					"type": "math"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "metric",
+				"operator": "=",
+				"value": "users"
+				},
+				{
+				"condition": "AND",
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Users logged in",
+		"tooltip": {
+			"msResolution": true,
+			"shared": true,
+			"sort": 0,
+			"value_type": "cumulative"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": 0,
+			"show": true
+			},
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 8,
+			"y": 91
+		},
+		"id": 24,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"none"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_traffic",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\")/mean(\"max\")*100 FROM \"centreon_check_traffic\" WHERE \"hostname\" =~ /^$hostname$/ AND $timeFilter GROUP BY time($__interval), \"metric\" fill(none)",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Traffic %",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 8,
+			"x": 16,
+			"y": 91
+		},
+		"id": 13,
+		"legend": {
+			"avg": false,
+			"current": true,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_traffic",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Traffic",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "bps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 12,
+			"x": 0,
+			"y": 97
+		},
+		"id": 14,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_diskio",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^readtime/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk IO - Readtime",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "s",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 12,
+			"x": 12,
+			"y": 97
+		},
+		"id": 15,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_diskio",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^writetime/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk IO - Writetime",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "s",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 7,
+			"w": 12,
+			"x": 0,
+			"y": 103
+		},
+		"id": 17,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_diskio",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^readio/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk IO - ReadIO",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "Bps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 7,
+			"w": 12,
+			"x": 12,
+			"y": 103
+		},
+		"id": 18,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_diskio",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"centreon_check_diskio\" WHERE \"hostname\" =~ /^$hostname$/ AND \"metric\" =~ /^writeio/ AND $timeFilter GROUP BY time($__interval), \"metric\" fill(previous)",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^readio/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk IO - WriteIO",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "Bps",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 7,
+			"w": 24,
+			"x": 0,
+			"y": 110
+		},
+		"id": 19,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "centreon_check_diskio",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"centreon_check_diskio\" WHERE \"hostname\" =~ /^$hostname$/ AND \"metric\" =~ /^writeio/ AND $timeFilter GROUP BY time($__interval), \"metric\" fill(previous)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/^util/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk IO - Utitlisation %",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "percent",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 12,
+			"x": 0,
+			"y": 117
+		},
+		"id": 20,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_vmstat_diskio",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"centreon_check_diskio\" WHERE \"hostname\" =~ /^$hostname$/ AND \"metric\" =~ /^writeio/ AND $timeFilter GROUP BY time($__interval), \"metric\" fill(previous)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/read$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/da/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk Read - IOPS",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "none",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		},
+		{
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "icinga2",
+		"fill": 1,
+		"gridPos": {
+			"h": 6,
+			"w": 12,
+			"x": 12,
+			"y": 117
+		},
+		"id": 21,
+		"legend": {
+			"avg": false,
+			"current": false,
+			"max": false,
+			"min": false,
+			"show": true,
+			"total": false,
+			"values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+			{
+			"alias": "$tag_metric",
+			"dsType": "influxdb",
+			"groupBy": [
+				{
+				"params": [
+					"$__interval"
+				],
+				"type": "time"
+				},
+				{
+				"params": [
+					"metric"
+				],
+				"type": "tag"
+				},
+				{
+				"params": [
+					"previous"
+				],
+				"type": "fill"
+				}
+			],
+			"measurement": "check_vmstat_diskio",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT mean(\"value\") FROM \"check_diskio\" WHERE \"hostname\" =~ /^$hostname$/ AND \"metric\" =~ /write$/ AND \"metric\" =~ /sda/ AND $timeFilter GROUP BY time($__interval), \"metric\" fill(previous)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+				[
+				{
+					"params": [
+					"value"
+					],
+					"type": "field"
+				},
+				{
+					"params": [],
+					"type": "mean"
+				}
+				]
+			],
+			"tags": [
+				{
+				"key": "hostname",
+				"operator": "=~",
+				"value": "/^$hostname$/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/write/"
+				},
+				{
+				"condition": "AND",
+				"key": "metric",
+				"operator": "=~",
+				"value": "/da/"
+				}
+			]
+			}
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk Write - IOPS",
+		"tooltip": {
+			"shared": true,
+			"sort": 0,
+			"value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+			"buckets": null,
+			"mode": "time",
+			"name": null,
+			"show": true,
+			"values": []
+		},
+		"yaxes": [
+			{
+			"format": "none",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			},
+			{
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+			}
+		],
+		"yaxis": {
+			"align": false,
+			"alignLevel": null
+		}
+		}
+	],
+	"refresh": "30s",
+	"schemaVersion": 16,
+	"style": "dark",
+	"tags": [],
+	"templating": {
+		"list": [
+		{
+			"allValue": null,
+			"current": {},
+			"datasource": "icinga2",
+			"hide": 0,
+			"includeAll": false,
+			"label": "Hostname",
+			"multi": false,
+			"name": "hostname",
+			"options": [],
+			"query": "SHOW TAG VALUES FROM \"ping4\" WITH KEY = \"hostname\" WHERE \"server_type\" =~ /Liferay/",
+			"refresh": 1,
+			"regex": "",
+			"sort": 0,
+			"tagValuesQuery": "",
+			"tags": [],
+			"tagsQuery": "",
+			"type": "query",
+			"useTags": false
+		},
+		{
+			"allValue": null,
+			"current": {},
+			"datasource": "icinga2",
+			"hide": 0,
+			"includeAll": true,
+			"label": null,
+			"multi": false,
+			"name": "disk",
+			"options": [],
+			"query": "SHOW TAG VALUES FROM \"disk\" WITH KEY = \"metric\" WHERE \"hostname\" =~ /^$hostname$/",
+			"refresh": 1,
+			"regex": "",
+			"sort": 0,
+			"tagValuesQuery": "",
+			"tags": [],
+			"tagsQuery": "",
+			"type": "query",
+			"useTags": false
+		}
+		]
+	},
+	"time": {
+		"from": "now-24h",
+		"to": "now"
+	},
+	"timepicker": {
+		"refresh_intervals": [
+		"5s",
+		"10s",
+		"30s",
+		"1m",
+		"5m",
+		"15m",
+		"30m",
+		"1h",
+		"2h",
+		"1d"
+		],
+		"time_options": [
+		"5m",
+		"15m",
+		"1h",
+		"6h",
+		"12h",
+		"24h",
+		"2d",
+		"7d",
+		"30d"
+		]
+	},
+	"timezone": "browser",
+	"title": "Liferay",
+	"uid": "5hH5N4dmk",
+	"version": 41
+	}

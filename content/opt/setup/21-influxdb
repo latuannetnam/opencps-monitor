@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. /opt/helpers
+
+chown -R influxdb:influxdb /var/lib/influxdb
+mkdir -p /var/log/influxdb
+chown -R influxdb:influxdb /var/log/influxdb
+
+if [ ! "$(ls -A /var/lib/influxdb)" ]; then
+	echo "=>InfluxDB datadir is empty...initializing"
+	service influxdb start
+	sleep 5
+	influx -execute "CREATE DATABASE ${INFLUXDB_DATA}"
+	influx -execute "CREATE USER ${INFLUXDB_USER} WITH PASSWORD 'INFLUXDB_PASS'"
+	influx -execute "GRANT ALL ON ${INFLUXDB_DATA} TO ${INFLUXDB_USER}"
+	influx -execute 'SHOW DATABASES'
+	influx -execute 'SHOW USERS'
+	service influxdb stop
+	echo "InfluxDB Done "
+fi
+
+

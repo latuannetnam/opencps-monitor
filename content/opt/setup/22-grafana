@@ -1,0 +1,30 @@
+#!/bin/bash
+
+. /opt/helpers
+
+if [ ! "$(ls -A /etc/grafana)" ]; then
+	echo "=> Copying fresh config-files for /etc/grafana"
+	cp -R /etc/grafana.dist/* /etc/grafana/
+	cp -R /var/lib/grafana.dist/* /var/lib/grafana
+	cat > /etc/grafana/provisioning/datasources/icinga2.yml <<-END
+apiVersion: 1
+datasources:
+ - name: icinga2
+   type: influxdb
+   access: proxy
+   url: http://localhost:8086
+   password: icinga
+   user: icingaadmin
+   database: icinga2
+   isDefault: true
+   editable: true
+END
+	
+fi
+
+chown -R grafana:grafana /var/lib/grafana
+mkdir -p /var/log/grafana
+chown -R grafana:grafana /var/log/grafana
+chown -R grafana:grafana /etc/grafana
+
+

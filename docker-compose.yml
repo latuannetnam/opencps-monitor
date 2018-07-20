@@ -18,11 +18,14 @@ services:
       - ICINGAWEB2_ADMIN_PASS=icinga
       - ICINGA2_USER_FULLNAME=Icinga2 Docker Monitoring Instance
       - DEFAULT_MYSQL_HOST=localhost
+      - INFLUXDB_USER=icingaadmin
+      - INFLUXDB_PASS=icinga
     volumes:
       - ./data/icinga/cache:/var/cache/icinga2
       - ./data/icinga/certs:/etc/apache2/ssl
       - ./data/icinga/etc/icinga2:/etc/icinga2
       - ./data/icinga/etc/icingaweb2:/etc/icingaweb2
+      - ./data/icinga/etc/grafana:/etc/grafana
       - ./data/icinga/lib/icinga:/var/lib/icinga2
       - ./data/icinga/lib/php/sessions:/var/lib/php/sessions
       - ./data/icinga/log/apache2:/var/log/apache2
@@ -31,6 +34,8 @@ services:
       - ./data/icinga/log/mysql:/var/log/mysql
       - ./data/icinga/spool:/var/spool/icinga2
       - ./data/icinga/lib/mysql:/var/lib/mysql
+      - ./data/icinga/lib/influxdb:/var/lib/influxdb
+      - ./data/icinga/lib/grafana:/var/lib/grafana
       # If you want to enable outbound e-mail, create the files
       #  - ./ssmtp/ssmtp.conf
       #  - ./ssmtp/revaliases
@@ -42,4 +47,5 @@ services:
       - 80:80
       - 443:443
       - 5665:5665
+      - 3000:3000
   

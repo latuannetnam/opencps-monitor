@@ -14,10 +14,12 @@ ENV APACHE2_HTTP=REDIRECT \
     ICINGA2_FEATURE_DIRECTOR_KICKSTART="true" \
     ICINGA2_FEATURE_DIRECTOR_USER="icinga2-director"
 
+#Prerequisite
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
+      apt-utils \  
       apache2 \
       ca-certificates \
       curl \
@@ -40,10 +42,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       unzip \
       wget \
       libdbd-mysql-perl \
-      nano mc\
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+      nano mc \
+      apt-transport-https
+ 
 
+#Icinga2, IcingaWeb2
 RUN export DEBIAN_FRONTEND=noninteractive \
  && curl -s https://packages.icinga.com/icinga.key \
  | apt-key add - \
@@ -59,9 +62,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       monitoring-plugins \
       nagios-nrpe-plugin \
       nagios-plugins-contrib \
-      nagios-snmp-plugins \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+      nagios-snmp-plugins
+ 
 
 ARG GITREF_DIRECTOR=master
 ARG GITREF_MODGRAPHITE=master
@@ -85,6 +87,17 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
 #  && rm aws.zip \
  && true
 
+# InfluxDB and Grafana 
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && wget https://dl.influxdata.com/influxdb/releases/influxdb_1.6.0_amd64.deb \
+    &&  dpkg -i influxdb_1.6.0_amd64.deb \
+    && curl https://packagecloud.io/gpg.key | sudo apt-key add - \
+    && echo "deb https://packagecloud.io/grafana/testing/debian/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/grafana.list \
+    && apt-get update \
+    && apt-get install -y grafana
+    
+    
+
 ADD content/ /
 
 # Final fixes
@@ -94,16 +107,20 @@ RUN true \
  && mkdir /etc/icingaweb2 \
  && mv /etc/icinga2/ /etc/icinga2.dist \
  && mkdir /etc/icinga2 \
+ && mv /etc/grafana/ /etc/grafana.dist \
+ && mkdir /etc/grafana \
+ && mv /var/lib/grafana /var/lib/grafana.dist \
+ && mkdir /var/lib/grafana \
  && usermod -aG icingaweb2 www-data \
  && usermod -aG nagios www-data \
  && rm -rf \
-     /var/lib/mysql/* \
+     /var/lib/mysql/* /var/lib/influxdb/* \
  && chmod u+s,g+s \
      /bin/ping \
      /bin/ping6 \
      /usr/lib/nagios/plugins/check_icmp
 
-EXPOSE 80 443 5665
+EXPOSE 80 443 5665 3000 8086
 
 # Initialize and run Supervisor
 ENTRYPOINT ["/opt/run"]

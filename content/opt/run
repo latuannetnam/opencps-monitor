@@ -33,6 +33,11 @@ export ICINGAWEB2_DIRECTOR_MYSQL_USER=${ICINGAWEB2_DIRECTOR_MYSQL_USER:-${DEFAUL
 export ICINGAWEB2_DIRECTOR_MYSQL_PASS=${ICINGAWEB2_DIRECTOR_MYSQL_PASS:-${DIRECTOR_PASSWORD:-${DEFAULT_MYSQL_PASS}}}
 export ICINGAWEB2_DIRECTOR_MYSQL_DATA=${ICINGAWEB2_DIRECTOR_MYSQL_DATA:-icingaweb2_director}
 
+#Influxdb
+export INFLUXDB_USER=${INFLUXDB_USER:-${ICINGAWEB2_ADMIN_USER}}
+export INFLUXDB_PASS=${INFLUXDB_PASS:-${ICINGAWEB2_ADMIN_PASS}}
+export INFLUXDB_DATA=${INFLUXDB_DATA:-icinga2}
+
 # Generate the system wide locales in the background.
 # It may take a long time, depending on the mounted /etc/locale.gen.
 # The only part, where locale processing is known to be necessary, is
@@ -64,3 +69,4 @@ icinga2 daemon --validate
 /usr/bin/supervisord -c /etc/supervisor/supervisord.conf -n &
 trap "supervisorctl shutdown && wait" SIGTERM
 wait
+
