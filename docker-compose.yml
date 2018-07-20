@@ -30,6 +30,7 @@ services:
       - ./data/icinga/log/icingaweb2:/var/log/icingaweb2
       - ./data/icinga/log/mysql:/var/log/mysql
       - ./data/icinga/spool:/var/spool/icinga2
+      - ./data/icinga/lib/mysql:/var/lib/mysql
       # If you want to enable outbound e-mail, create the files
       #  - ./ssmtp/ssmtp.conf
       #  - ./ssmtp/revaliases
