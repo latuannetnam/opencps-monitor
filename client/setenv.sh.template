@@ -1,0 +1,10 @@
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote"
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.port=10000"
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.rmi.port=10000"
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.ssl=false"
+CATALINA_OPTS="$CATALINA_OPTS -Djava.rmi.server.hostname=localhost"
+# Un comment line below for remote RMI access
+#CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.local.only=false"
+# Comment out line below for remote RMI access
+CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.host=127.0.0.1"
