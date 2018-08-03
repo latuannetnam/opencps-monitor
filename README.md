@@ -1,4 +1,5 @@
 # Monitoring tools for OpenCPS (Icinga2, InfluxDB and Grafana)
+![Mô hình triển khai monitoring](Monitor Application2.png)
 ## Cài đặt trên Server
 * B1. Cài đặt Docker và Docker Compose
   * Thực hiện như hướng dẫn trên trang chủ của Docker tại đây: https://docs.docker.com/install/linux/docker-ce/ubuntu/ 
