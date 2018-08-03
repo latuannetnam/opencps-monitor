@@ -1,5 +1,14 @@
 # Monitoring tools for OpenCPS (Icinga2, InfluxDB and Grafana)
-![Mô hình triển khai monitoring](Monitor Application2.png)
+![Mô hình triển khai monitoring](Monitor-Application2.png)
+## Giới thiệu
+Bộ công cụ monitor hệ thống phần mềm OpenCPS, gồm các thành phần sau:
+* Server:
+  * Icinga2: monitor các metrics của OpenCPS
+  * InfluxDB: lưu trữ dmetrics
+  * Grafana: Dashboard
+  * Automation scripts: các tool để cài đặt, setup hệ thống
+* Client: 
+  * Icinga2 Agent: cài đặt trên client để thu thập metrics và gửi cho Server
 ## Cài đặt trên Server
 * B1. Cài đặt Docker và Docker Compose
   * Thực hiện như hướng dẫn trên trang chủ của Docker tại đây: https://docs.docker.com/install/linux/docker-ce/ubuntu/ 
