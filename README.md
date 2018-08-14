@@ -30,9 +30,9 @@ Bộ công cụ monitor hệ thống phần mềm OpenCPS, gồm các thành ph�
   * sudo ./client_install.sh
 * B3. Cấu hình Agent
   * cd opencps-monitor/client
-  * ./client_setup.sh -h master hostname -i master ip address
+  * ./client_setup.sh -h master_hostname -i master_ip_address
   * Trong đó: master_hostname là hostname của server (ngầm định hostname=icinga2)
-  * master ip address: là địa chỉ IP của server
+  * master_ip_address: là địa chỉ IP của server
 * B4. Cấu hình MySQL
   * cd opencps-monitor/client
   * mysql -u root < mysql_setup.sql
